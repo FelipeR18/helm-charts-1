@@ -28,6 +28,7 @@ spec:
       http:
         paths:
           - path: "/"
+            pathType: Prefix
             backend:
               serviceName: {{ $fullName }}-admin
               servicePort: {{ .Values.openvpn.ports.admin }}
