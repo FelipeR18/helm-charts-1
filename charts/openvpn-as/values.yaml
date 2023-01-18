@@ -5,7 +5,7 @@
 replicaCount: 1
 
 openvpn:
-  timezone: Europe/London
+  timezone: America/Recife
   ports:
     # -- Admin GUI port
     admin: 943
@@ -23,9 +23,9 @@ openvpn:
 
   admin:
     # -- Username for the initial super_user. Cannot be `admin`
-    user: altmin
+    user: admin
     # -- Password for the initial super_user
-    password: passw0rd
+    password: admin
   # -- (list) Additional users to create when non-existent `[{"user":"someuser","password":"somepassword"}]`
   users:
     # - user: someuser
@@ -55,7 +55,7 @@ image:
   # -- Image pull policy
   pullPolicy: IfNotPresent
   # -- Image tag
-  tag: ""
+  tag: latest
 
 # -- Registry secret names as an array
 imagePullSecrets: []
@@ -82,17 +82,17 @@ securityContext:
 
 service:
   # -- Kubernetes Service type for VPN, generally this is "LoadBalancer"
-  type: ClusterIP
+  type: LoadBalancer
   tcp:
     enabled: true
   udp:
     enabled: true
   admin:
     # -- Kubernetes Service type for Admin GUI
-    type: ClusterIP
+    type: LoadBalancer
   gui:
     # -- Kubernetes Service type for Client GUI
-    type: ClusterIP
+    type: LoadBalancer
 
 ingress:
   gui:
